@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  db:
+    container_name: database
+    image:  postgres:14.0-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: Bazadanych123
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+      - ./Docker:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+  booksapi:
+    image: ${DOCKER_REGISTRY-}booksapi
+    build:
+      context: .
+      dockerfile: BooksApi/Dockerfile
+
+volumes:
+  db-volume:

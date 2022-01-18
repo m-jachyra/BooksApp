@@ -176,7 +176,7 @@ namespace BooksApi.Controllers
         private string GenerateTokens(User identityUser)
         {
             // Generate access token
-            string accessToken = GenerateAccessTokenAsync(identityUser).ToString();
+            string accessToken = GenerateAccessTokenAsync(identityUser).Result;
 
             // Generate refresh token and set it to cookie
             var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();

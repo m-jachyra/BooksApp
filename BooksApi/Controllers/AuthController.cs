@@ -100,7 +100,7 @@ namespace BooksApi.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("RefreshToken")]
+        [Route("Refresh")]
         public IActionResult RefreshToken()
         {
             var token = HttpContext.Request.Cookies["refreshToken"];

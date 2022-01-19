@@ -183,7 +183,7 @@ namespace BooksApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RefreshToken",
+                name: "RefreshTokens",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -198,9 +198,9 @@ namespace BooksApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RefreshToken", x => x.Id);
+                    table.PrimaryKey("PK_RefreshTokens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RefreshToken_AspNetUsers_UserId",
+                        name: "FK_RefreshTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -296,8 +296,8 @@ namespace BooksApi.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "f290d7f7-a0a4-4f81-bb39-fa556cb5cef4", "Default", "DEFAULT" },
-                    { "059e5df3-8035-4d0d-8a78-ad043ab5d5ba", "aa244d2f-ab96-4d10-89cc-853660ce5f10", "Admin", "ADMIN" }
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "578c9d97-d610-47a4-8259-1b7da4bd5036", "Default", "DEFAULT" },
+                    { "cef7780a-7e43-47ab-810c-c04f0114ec01", "5ab10a3d-040e-4054-8f31-aff48f10dca2", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -305,25 +305,25 @@ namespace BooksApi.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "36e158e5-3731-4976-a13f-445fe61fdddd", 0, "c3402916-90ae-4518-a27a-d96a3a16b261", "jk@gmail.com", false, false, null, "JK@GMAIL.COM", "JK", "AQAAAAEAACcQAAAAEDvHtSG33pC9UyUDs24JB1HqD1vvuYPmUkLSTrGa/ZUMWjqmNo7azkW+iabf9maZqA==", null, false, "30d51cd9-8b15-4849-84ef-2d115767938c", false, "JK" },
-                    { "593a9e65-5f4d-40b8-91f5-1813f577ce70", 0, "187b7d47-5ad1-40ef-83df-6e3cc6d3756f", "martink@gmail.com", false, false, null, "MARTINK@GMAIL.COM", "MARTINX", "AQAAAAEAACcQAAAAEO5I9ooRw4GMKWEjVL7WZFxoGEintpC6N7GqiwIuRj8ay/rt6N8E0of7oDCAXGVrLA==", null, false, "481e6d0d-93a3-4f83-95d7-d71fe6e54393", false, "Martinx" },
-                    { "509de9d8-a3d5-47d9-a6b2-82c13c5dd216", 0, "2d1488c0-fb07-45db-9b7c-979eff79283f", "mich@gmail.com", false, false, null, "MICH@GMAIL.COM", "MICHAELLLO", "AQAAAAEAACcQAAAAECDzE8qTpmY1UlTZ9nqwDFBIAune2ARalJNl2cSLm5Vs+xoQOD9Er7kkDjUeM0hWLA==", null, false, "1f18f157-3ab4-4c5f-911a-1ca2757f7f21", false, "Michaelllo" },
-                    { "e6f1d790-fa08-4db8-8958-4d8d171193d2", 0, "2ebc79bc-6c15-4d40-98d2-88432434ce5c", "a.one@gmail.com", false, false, null, "A.ONE@GMAIL.COM", "ANNA", "AQAAAAEAACcQAAAAEHsaxYOAHlh/2fpRPEtOeOp8EIjrhfWEf4vZCbjjXIT4hVXvpAT85o0Ifv70oxC7Tg==", null, false, "97bcefba-051c-4f5b-a032-c1242878c359", false, "Anna" },
-                    { "7b2e5361-9196-49f7-aa93-9c752fd63f19", 0, "c74a0f6e-a88e-40a5-929a-7060637bf7ac", "sara12@gmail.com", false, false, null, "SARA12@GMAIL.COM", "SARA12", "AQAAAAEAACcQAAAAENXAvfhyyQ1aVvtNYCcxGXkoMeb0K2IwMQV3n9miqs0NvBRmMwji1VimRuM1S57MBA==", null, false, "832957f3-acbc-4e11-8ebb-07a9fb01597e", false, "Sara12" },
-                    { "1e6751b3-ecd8-4835-aee7-29274771601d", 0, "18fec5da-8909-4e36-aa85-1bd159a4bdde", "t.smith@gmail.com", false, false, null, "T.SMITH@GMAIL.COM", "TIMIX", "AQAAAAEAACcQAAAAEL0fBl61Q9iWalIkdflBZZkRLwDyyitPYfr9Ua3KdGbxegav9esZ7g8jZYg1+CFwFg==", null, false, "b793a728-3b75-4f95-a12e-c79e2c3f3aa4", false, "Timix" },
-                    { "e32bdbc1-1892-4e41-9c69-6fcf8e40635c", 0, "0d5a4e93-edae-4ae4-8354-ec11dde60cef", "norbi.m@gamil.com", false, false, null, "NORBI.M@GAMIL.COM", "NORBI", "AQAAAAEAACcQAAAAEH9MbBi+C9UuUAldpW8kiiEpGrRWUuSOQ3CKF7bH2SDK1f/REQttgFyrXCiQVOhiwQ==", null, false, "cc41d885-c98d-44fe-bb26-feb7fb61a88f", false, "Norbi" },
-                    { "7493442e-646b-41d4-8aa8-8b764c12eb2c", 0, "a83d8f0f-a107-457c-84be-c29ba6a996d0", "ewarak@gmail.com", false, false, null, "EWARAK@GMAIL.COM", "EWAAAA", "AQAAAAEAACcQAAAAEBOC05aEVERaB5oGeaLf+z71TJpI5t8BTmt1VOEiKyURYF/ySRu1UJZUC1Rs5TZw9w==", null, false, "1064cb8e-14ac-403d-81f5-8fe30faf09c3", false, "Ewaaaa" },
-                    { "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4", 0, "7ba808bf-8095-426f-88e5-4cdd45037483", "znowakowska@gmail.com", false, false, null, "ZNOWAKOWSKA@GMAIL.COM", "ZOSIAA1", "AQAAAAEAACcQAAAAEAIpD6j7UwcWLBoD7iJMEtrAjXQWSivyyQmbqGR3CC9n2ebZ58Y32Xeqpemzh0+nAw==", null, false, "85f911f9-dae6-498e-ac3d-478d6a2c69fe", false, "Zosiaa1" },
-                    { "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2", 0, "3a339b40-8502-4fa9-89f7-35dd5e2ac4a3", "j.fik@gmail.com", false, false, null, "J.FIK@GMAIL.COM", "JANEK99", "AQAAAAEAACcQAAAAEJSRx+VvuXZsloUbS5Xs/w1pQv6IICnoigeaEINkElIpq1k9UycfsqoNRVG60AmSlw==", null, false, "9cf69988-39b2-4aff-ab7d-fec1978b4d0d", false, "Janek99" },
-                    { "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77", 0, "f5561a97-c2f1-48ff-9fbb-3eaf7ac61b27", "wiktoria@gmail.com", false, false, null, "WIKTORIA@GMAIL.COM", "WIKA", "AQAAAAEAACcQAAAAEA7dNq9dYmfYlO9fwarBM96RfrlM6FUtdhnpdAHZDuB/oF0TtHxm9C1GXaAotd9V2g==", null, false, "f4592ff4-8517-4b37-9e57-b64b48753b40", false, "Wika" },
-                    { "0cf44c1c-6a00-4738-b33f-b662cf98cd7e", 0, "cabfa7af-7923-4576-b7ed-15238c355f47", "rzeka.magda@gmail.com", false, false, null, "RZEKA.MAGDA@GMAIL.COM", "MADZIX", "AQAAAAEAACcQAAAAEG5L2jFN2ieMFq1vz5+ViOZzMjBBmKN9oqD+tSgzo+Gs3h4BI8EQf6PAJqz4hddzmw==", null, false, "e7453046-def5-403b-b02b-bd98e0bb1cfc", false, "Madzix" },
-                    { "1e1a1a16-3c37-467f-ac77-e83f3061edd3", 0, "159b17f7-5225-4624-8a09-970038ba4cf5", "w.wrak@gmail.com", false, false, null, "W.WRAK@GMAIL.COM", "WERCIA", "AQAAAAEAACcQAAAAELufaCMXl3gaku2lGOZUpGejOY3C/Af7hX2rF2G04lLVG88OIOWWQWiCLDFz0wtC5A==", null, false, "c2d86e9b-56c3-4a29-a5d9-5aebaf1fa98c", false, "Wercia" },
-                    { "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316", 0, "be6063ca-a880-4060-9aa3-fcd577d0bea2", "marcinp@gmail.com", false, false, null, "MARCINP@GMAIL.COM", "PANMARCIN", "AQAAAAEAACcQAAAAENG61JlbqYVlpkdEJjRVNFjC1mFE+1lKmtLB/vL/8SwI7CGWlxLTi3p2NjkmSjBqvA==", null, false, "ea3e965b-428e-4bcf-90c0-e043a3cbfc40", false, "PanMarcin" },
-                    { "fb5fad4f-130e-439a-a74d-e75432c8a5d7", 0, "11fc7411-f535-4313-a845-dc4e5be601c2", "znawca@gamil.com", false, false, null, "ZNAWCA@GAMIL.COM", "ZNAWCA", "AQAAAAEAACcQAAAAEBxYusOEQYOcOu0Xq7ILIYju8iOzYKIIoFG7GmeGaOsrwc02ILfzYONYUKG9bjsBDA==", null, false, "a6723cf4-440d-49bf-87db-39097eb5ae24", false, "Znawca" },
-                    { "bdf0715a-053f-4d3a-85e5-8013f853107e", 0, "93493796-3256-4ed5-b0b4-d23def9501c3", "mirkow@gmail.com", false, false, null, "MIRKOW@GMAIL.COM", "MIREK123", "AQAAAAEAACcQAAAAEL0TD1w0LSHAiOSDCEZONNUPsbA2oPgj0vl6Ek5pvqe2K//IPIClfh9zh8wcqunBow==", null, false, "f3f04872-039b-42e2-aa3d-a63aebff1542", false, "mirek123" },
-                    { "9c3d4bdf-a2eb-42f5-9b67-07facff0653d", 0, "13834f7b-21be-49a2-bd5c-e88672d10138", "enowak@gmail.com", false, false, null, "ENOWAK@GMAIL.COM", "EMILKA", "AQAAAAEAACcQAAAAEOhoahz/fsN5IWizlhMhOntZuRLwLNsg84PE2QQWI2dKQNFQqygtxDjX0jy/mSo4LQ==", null, false, "2e0e1d81-8f72-4e85-81d8-8dd91883d023", false, "Emilka" },
-                    { "23e1a0ef-4a8a-462a-8219-1d3a1169f417", 0, "1a704323-39db-4943-9e86-eb9ecd0e731a", "stafano@gmail.com", false, false, null, "STAFANO@GMAIL.COM", "STEFFFANO1", "AQAAAAEAACcQAAAAEBNCR+jbb8jigGFQ349zwBu1oN1hBeuArEZJmpuAfgBRfotAqSa5yTQCeTeAT8lFWQ==", null, false, "b382af22-eddf-41bf-819b-83894f8f09d4", false, "Stefffano1" },
-                    { "a6592ad5-0033-4d24-b5c7-b5ab43d81836", 0, "6086b367-b92b-4d31-a231-5711478a869d", "ewelina99@gmail.com", false, false, null, "EWELINA99@GMAIL.COM", "EWELCIA", "AQAAAAEAACcQAAAAEFRpExQSnfT9rhkooIMylOfivXUfOSj9q/YPD01D0eoLp5eVk0l5SQ7wVoGotJq5lQ==", null, false, "b3d6950e-be21-4bf3-9931-8494b44cc218", false, "Ewelcia" }
+                    { "36e158e5-3731-4976-a13f-445fe61fdddd", 0, "bbeaf624-7e06-4098-9434-0bc4b785e682", "jk@gmail.com", false, false, null, "JK@GMAIL.COM", "JK", "AQAAAAEAACcQAAAAEN/riufSGKGU2pdc+QgHHn4RIMaB3gZnzH4hf1VAKOEqX8rA3rmr7fI2R9YnDZiEKw==", null, false, "993dada4-3a08-44b3-94a4-347522482000", false, "JK" },
+                    { "593a9e65-5f4d-40b8-91f5-1813f577ce70", 0, "b538d2a5-7e17-41d6-bdda-6794a6456698", "martink@gmail.com", false, false, null, "MARTINK@GMAIL.COM", "MARTINX", "AQAAAAEAACcQAAAAEIbHNTScInLCzoPo/sIPgeSvPFNTk/N3g6lWMytqWezvjX08rHU8uIc1+wzgisQNYA==", null, false, "43c5c256-d308-4bd9-b586-834397eacd16", false, "Martinx" },
+                    { "509de9d8-a3d5-47d9-a6b2-82c13c5dd216", 0, "02719bdd-70e8-4888-9885-4eea21513f20", "mich@gmail.com", false, false, null, "MICH@GMAIL.COM", "MICHAELLLO", "AQAAAAEAACcQAAAAENsOwHoexrbamG2Eg+jm9vrowRjcb/Hs9N4TSAP3Jgrt2GJ1BH3pBlk8xtZDewUKhg==", null, false, "77462246-3813-45e9-a9cf-71351303dec4", false, "Michaelllo" },
+                    { "e6f1d790-fa08-4db8-8958-4d8d171193d2", 0, "b7e74cf8-5ae9-4176-ab9f-7959f939b819", "a.one@gmail.com", false, false, null, "A.ONE@GMAIL.COM", "ANNA", "AQAAAAEAACcQAAAAEAnjlD3KIOY2Xgpq3zKmV6HmKNzBk+f4Cg0SBUqg1jZmH4fcQwOq0QBU1/AqZiLPlA==", null, false, "b347cdea-f8eb-4f43-96ae-69cc410184d2", false, "Anna" },
+                    { "7b2e5361-9196-49f7-aa93-9c752fd63f19", 0, "5f7ca58e-615a-4721-b79c-1fb954cd20ee", "sara12@gmail.com", false, false, null, "SARA12@GMAIL.COM", "SARA12", "AQAAAAEAACcQAAAAEB1oCK8TJdhRtUF1/zrUmi0/fyW8JtqbvGKKLyJK10GMPFAJXyQQqkhy+Dn8iLlzng==", null, false, "3d659a3b-a923-4f27-8b57-1faa975dfaf9", false, "Sara12" },
+                    { "1e6751b3-ecd8-4835-aee7-29274771601d", 0, "a0dc2f08-9294-44d5-8c68-254e7de85c3c", "t.smith@gmail.com", false, false, null, "T.SMITH@GMAIL.COM", "TIMIX", "AQAAAAEAACcQAAAAENUx8dIbE2A7Fl6aGLhBPyDh5I8Awj3IhOeLrjG4io1vluRKvQKlLS6Tz7mhwV7zOg==", null, false, "fefd15f8-0277-4120-8b96-a4d36d7a2b91", false, "Timix" },
+                    { "e32bdbc1-1892-4e41-9c69-6fcf8e40635c", 0, "bd97284c-7e58-4f3f-860b-68c6d53febef", "norbi.m@gamil.com", false, false, null, "NORBI.M@GAMIL.COM", "NORBI", "AQAAAAEAACcQAAAAEDRFrzfIG143H3HVHxguEs9I5l0GaKb+hwfX3/VDIozpfWV7WV3bCEHYsYrWdyd0rg==", null, false, "fb0ee692-d74c-4a47-818a-4ad0fa6f9097", false, "Norbi" },
+                    { "7493442e-646b-41d4-8aa8-8b764c12eb2c", 0, "ebac61b2-4fd1-4ecc-ad65-af85aebfdfd1", "ewarak@gmail.com", false, false, null, "EWARAK@GMAIL.COM", "EWAAAA", "AQAAAAEAACcQAAAAEH2P3mYJmZan0OlKW8gxz3YMdhkox2bWHAwQyeskF1ok1k8uOgmB3fiFzZrAo7vMIg==", null, false, "68e1231c-25b7-486d-b101-a203a3503ce4", false, "Ewaaaa" },
+                    { "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4", 0, "c0d6b83b-8d8f-4648-ab29-ac6da58b17f1", "znowakowska@gmail.com", false, false, null, "ZNOWAKOWSKA@GMAIL.COM", "ZOSIAA1", "AQAAAAEAACcQAAAAEBbO8b958JESdBC2iH9OWbQPWb190gXUzV2bXrrMzxsNidT42khNjyKc5A+Tesls7w==", null, false, "866767a4-98bb-4d62-b389-0ea437fadcd3", false, "Zosiaa1" },
+                    { "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2", 0, "0d160a1a-685d-4b99-8cef-ce19cfd8cba1", "j.fik@gmail.com", false, false, null, "J.FIK@GMAIL.COM", "JANEK99", "AQAAAAEAACcQAAAAEFgywC9rr5W8PnmrybBItP4z6lZgoRyNFsowX2QihVgKVcF6AOt4pDfoOqu423dBaQ==", null, false, "7d0dd088-da81-498d-8523-970bfef49ddf", false, "Janek99" },
+                    { "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77", 0, "58fc7909-e412-4805-9d68-a2d3746fc110", "wiktoria@gmail.com", false, false, null, "WIKTORIA@GMAIL.COM", "WIKA", "AQAAAAEAACcQAAAAECSWiSOxnH69A+p4SW7FhKR/Hn35IxmgaXULJ3X403Djjfy+8ZAhX90Fu8F3ZEFm5A==", null, false, "5892ec31-6b2b-4e9d-bb14-922b26e57456", false, "Wika" },
+                    { "0cf44c1c-6a00-4738-b33f-b662cf98cd7e", 0, "8c3b1fb3-0c9d-4c0a-a70b-ca61768848ae", "rzeka.magda@gmail.com", false, false, null, "RZEKA.MAGDA@GMAIL.COM", "MADZIX", "AQAAAAEAACcQAAAAEGbFlqlPkedpfCjKtg+uB75EhcGtws5iCALJN9EeNHWPetdoPGVsQr22j0gR1HXaaA==", null, false, "8ae0ce89-2f0e-4c57-883f-f2bb661ec749", false, "Madzix" },
+                    { "1e1a1a16-3c37-467f-ac77-e83f3061edd3", 0, "ed42356a-eaf0-486a-adf5-51b4f193b5e0", "w.wrak@gmail.com", false, false, null, "W.WRAK@GMAIL.COM", "WERCIA", "AQAAAAEAACcQAAAAEJjdAD6xl+Sjymg3yzA4t6QFbdYVKqWPJlvIpxCCpeR/SXJUznPsQGFMmJv69K+IEw==", null, false, "c6eb5631-e0ef-4d5e-82c6-17a2d336b958", false, "Wercia" },
+                    { "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316", 0, "2d8ca985-dd0a-4752-84fc-5c64629523e1", "marcinp@gmail.com", false, false, null, "MARCINP@GMAIL.COM", "PANMARCIN", "AQAAAAEAACcQAAAAEJzclUnYri1R0JvSw9UjzzzycRKvGfDQnGOz8vxzNseogTUFcqUOSDkj1t+aU3Ug9A==", null, false, "7d17961b-d9a1-45fa-a533-b9ccab3d0e82", false, "PanMarcin" },
+                    { "fb5fad4f-130e-439a-a74d-e75432c8a5d7", 0, "ccd4b8de-2ff8-4035-b9eb-03b8c633e7a5", "znawca@gamil.com", false, false, null, "ZNAWCA@GAMIL.COM", "ZNAWCA", "AQAAAAEAACcQAAAAEDjGY5fnWiv1HkUxQOATx7rjSBbKk1cwAtF4v8qomaFitU2AgNMqpqfQJwOEmqjd8g==", null, false, "4d395ac7-262b-4571-b8a4-6ddbd1453a4c", false, "Znawca" },
+                    { "bdf0715a-053f-4d3a-85e5-8013f853107e", 0, "261b85c1-7ae6-492d-9c20-d9f31dd01f73", "mirkow@gmail.com", false, false, null, "MIRKOW@GMAIL.COM", "MIREK123", "AQAAAAEAACcQAAAAEIKkA8U7M/E8s/1j3+uWdLdLRqXCWCdEYmRB9pndMQPaBitFWt/rBODorX8iaZGQUg==", null, false, "49e2273f-70f5-495a-b5f6-5ebcba348add", false, "mirek123" },
+                    { "9c3d4bdf-a2eb-42f5-9b67-07facff0653d", 0, "b72a7c64-e1a6-4d26-9f8f-5e9a84deeef3", "enowak@gmail.com", false, false, null, "ENOWAK@GMAIL.COM", "EMILKA", "AQAAAAEAACcQAAAAEJR5okU5QfjEWbRxXogTi9+3A9tv+1Y6aFwJ9WoZnOeFd5ko+E4vFhcTZggecfhflg==", null, false, "b1aca2df-2d4f-4fb0-9408-0c558ae93cfb", false, "Emilka" },
+                    { "23e1a0ef-4a8a-462a-8219-1d3a1169f417", 0, "3f8c1f8d-ea3c-455c-8865-9a19cd32569a", "stafano@gmail.com", false, false, null, "STAFANO@GMAIL.COM", "STEFFFANO1", "AQAAAAEAACcQAAAAEAHFYHGeTTlZ4xTbt8KltK1pAvIWf+CmJ2jA1BucMApcnwKbC7kiJJZM+MNhYx9Log==", null, false, "4f9f964a-88e8-45db-800a-57642d900501", false, "Stefffano1" },
+                    { "a6592ad5-0033-4d24-b5c7-b5ab43d81836", 0, "c7fd178d-735d-4c0d-932d-e2cef56c6e89", "ewelina99@gmail.com", false, false, null, "EWELINA99@GMAIL.COM", "EWELCIA", "AQAAAAEAACcQAAAAEAORKT4C8Oap19PpHE+Zzsz3wCo6ZsDnALUdTCMBMLMfCbNS8dr2+NF7r71DSdvcQA==", null, false, "1e77824b-3d15-4cf3-af36-f6420a0667cf", false, "Ewelcia" }
                 });
 
             migrationBuilder.InsertData(
@@ -367,25 +367,25 @@ namespace BooksApi.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "059e5df3-8035-4d0d-8a78-ad043ab5d5ba", "23e1a0ef-4a8a-462a-8219-1d3a1169f417" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "e6f1d790-fa08-4db8-8958-4d8d171193d2" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "7b2e5361-9196-49f7-aa93-9c752fd63f19" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "1e6751b3-ecd8-4835-aee7-29274771601d" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "e32bdbc1-1892-4e41-9c69-6fcf8e40635c" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "7493442e-646b-41d4-8aa8-8b764c12eb2c" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "509de9d8-a3d5-47d9-a6b2-82c13c5dd216" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "a6592ad5-0033-4d24-b5c7-b5ab43d81836" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "0cf44c1c-6a00-4738-b33f-b662cf98cd7e" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "1e1a1a16-3c37-467f-ac77-e83f3061edd3" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "fb5fad4f-130e-439a-a74d-e75432c8a5d7" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "bdf0715a-053f-4d3a-85e5-8013f853107e" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "9c3d4bdf-a2eb-42f5-9b67-07facff0653d" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "593a9e65-5f4d-40b8-91f5-1813f577ce70" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4" },
-                    { "d9187272-b557-41b4-a976-04ad0cb5cf5f", "36e158e5-3731-4976-a13f-445fe61fdddd" }
+                    { "cef7780a-7e43-47ab-810c-c04f0114ec01", "23e1a0ef-4a8a-462a-8219-1d3a1169f417" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "e6f1d790-fa08-4db8-8958-4d8d171193d2" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "7b2e5361-9196-49f7-aa93-9c752fd63f19" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "1e6751b3-ecd8-4835-aee7-29274771601d" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "e32bdbc1-1892-4e41-9c69-6fcf8e40635c" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "7493442e-646b-41d4-8aa8-8b764c12eb2c" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "509de9d8-a3d5-47d9-a6b2-82c13c5dd216" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "a6592ad5-0033-4d24-b5c7-b5ab43d81836" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "0cf44c1c-6a00-4738-b33f-b662cf98cd7e" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "1e1a1a16-3c37-467f-ac77-e83f3061edd3" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "fb5fad4f-130e-439a-a74d-e75432c8a5d7" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "bdf0715a-053f-4d3a-85e5-8013f853107e" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "9c3d4bdf-a2eb-42f5-9b67-07facff0653d" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "593a9e65-5f4d-40b8-91f5-1813f577ce70" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4" },
+                    { "4b6245b3-7d2d-45ed-8c3b-af692f3363b0", "36e158e5-3731-4976-a13f-445fe61fdddd" }
                 });
 
             migrationBuilder.InsertData(
@@ -518,8 +518,8 @@ namespace BooksApi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RefreshToken_UserId",
-                table: "RefreshToken",
+                name: "IX_RefreshTokens_UserId",
+                table: "RefreshTokens",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -554,7 +554,7 @@ namespace BooksApi.Migrations
                 name: "Opinions");
 
             migrationBuilder.DropTable(
-                name: "RefreshToken");
+                name: "RefreshTokens");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

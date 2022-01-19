@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BooksApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220116165915_InitialCreate")]
+    [Migration("20220119193604_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -554,7 +554,7 @@ namespace BooksApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshToken");
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("BooksApi.Models.Review", b =>
@@ -811,15 +811,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "23e1a0ef-4a8a-462a-8219-1d3a1169f417",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1a704323-39db-4943-9e86-eb9ecd0e731a",
+                            ConcurrencyStamp = "3f8c1f8d-ea3c-455c-8865-9a19cd32569a",
                             Email = "stafano@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "STAFANO@GMAIL.COM",
                             NormalizedUserName = "STEFFFANO1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBNCR+jbb8jigGFQ349zwBu1oN1hBeuArEZJmpuAfgBRfotAqSa5yTQCeTeAT8lFWQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAHFYHGeTTlZ4xTbt8KltK1pAvIWf+CmJ2jA1BucMApcnwKbC7kiJJZM+MNhYx9Log==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b382af22-eddf-41bf-819b-83894f8f09d4",
+                            SecurityStamp = "4f9f964a-88e8-45db-800a-57642d900501",
                             TwoFactorEnabled = false,
                             UserName = "Stefffano1"
                         },
@@ -827,15 +827,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "593a9e65-5f4d-40b8-91f5-1813f577ce70",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "187b7d47-5ad1-40ef-83df-6e3cc6d3756f",
+                            ConcurrencyStamp = "b538d2a5-7e17-41d6-bdda-6794a6456698",
                             Email = "martink@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MARTINK@GMAIL.COM",
                             NormalizedUserName = "MARTINX",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO5I9ooRw4GMKWEjVL7WZFxoGEintpC6N7GqiwIuRj8ay/rt6N8E0of7oDCAXGVrLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIbHNTScInLCzoPo/sIPgeSvPFNTk/N3g6lWMytqWezvjX08rHU8uIc1+wzgisQNYA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "481e6d0d-93a3-4f83-95d7-d71fe6e54393",
+                            SecurityStamp = "43c5c256-d308-4bd9-b586-834397eacd16",
                             TwoFactorEnabled = false,
                             UserName = "Martinx"
                         },
@@ -843,15 +843,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "509de9d8-a3d5-47d9-a6b2-82c13c5dd216",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2d1488c0-fb07-45db-9b7c-979eff79283f",
+                            ConcurrencyStamp = "02719bdd-70e8-4888-9885-4eea21513f20",
                             Email = "mich@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MICH@GMAIL.COM",
                             NormalizedUserName = "MICHAELLLO",
-                            PasswordHash = "AQAAAAEAACcQAAAAECDzE8qTpmY1UlTZ9nqwDFBIAune2ARalJNl2cSLm5Vs+xoQOD9Er7kkDjUeM0hWLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENsOwHoexrbamG2Eg+jm9vrowRjcb/Hs9N4TSAP3Jgrt2GJ1BH3pBlk8xtZDewUKhg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1f18f157-3ab4-4c5f-911a-1ca2757f7f21",
+                            SecurityStamp = "77462246-3813-45e9-a9cf-71351303dec4",
                             TwoFactorEnabled = false,
                             UserName = "Michaelllo"
                         },
@@ -859,15 +859,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "e6f1d790-fa08-4db8-8958-4d8d171193d2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2ebc79bc-6c15-4d40-98d2-88432434ce5c",
+                            ConcurrencyStamp = "b7e74cf8-5ae9-4176-ab9f-7959f939b819",
                             Email = "a.one@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "A.ONE@GMAIL.COM",
                             NormalizedUserName = "ANNA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHsaxYOAHlh/2fpRPEtOeOp8EIjrhfWEf4vZCbjjXIT4hVXvpAT85o0Ifv70oxC7Tg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAnjlD3KIOY2Xgpq3zKmV6HmKNzBk+f4Cg0SBUqg1jZmH4fcQwOq0QBU1/AqZiLPlA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "97bcefba-051c-4f5b-a032-c1242878c359",
+                            SecurityStamp = "b347cdea-f8eb-4f43-96ae-69cc410184d2",
                             TwoFactorEnabled = false,
                             UserName = "Anna"
                         },
@@ -875,15 +875,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "7b2e5361-9196-49f7-aa93-9c752fd63f19",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c74a0f6e-a88e-40a5-929a-7060637bf7ac",
+                            ConcurrencyStamp = "5f7ca58e-615a-4721-b79c-1fb954cd20ee",
                             Email = "sara12@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SARA12@GMAIL.COM",
                             NormalizedUserName = "SARA12",
-                            PasswordHash = "AQAAAAEAACcQAAAAENXAvfhyyQ1aVvtNYCcxGXkoMeb0K2IwMQV3n9miqs0NvBRmMwji1VimRuM1S57MBA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB1oCK8TJdhRtUF1/zrUmi0/fyW8JtqbvGKKLyJK10GMPFAJXyQQqkhy+Dn8iLlzng==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "832957f3-acbc-4e11-8ebb-07a9fb01597e",
+                            SecurityStamp = "3d659a3b-a923-4f27-8b57-1faa975dfaf9",
                             TwoFactorEnabled = false,
                             UserName = "Sara12"
                         },
@@ -891,15 +891,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "1e6751b3-ecd8-4835-aee7-29274771601d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "18fec5da-8909-4e36-aa85-1bd159a4bdde",
+                            ConcurrencyStamp = "a0dc2f08-9294-44d5-8c68-254e7de85c3c",
                             Email = "t.smith@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "T.SMITH@GMAIL.COM",
                             NormalizedUserName = "TIMIX",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0fBl61Q9iWalIkdflBZZkRLwDyyitPYfr9Ua3KdGbxegav9esZ7g8jZYg1+CFwFg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENUx8dIbE2A7Fl6aGLhBPyDh5I8Awj3IhOeLrjG4io1vluRKvQKlLS6Tz7mhwV7zOg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b793a728-3b75-4f95-a12e-c79e2c3f3aa4",
+                            SecurityStamp = "fefd15f8-0277-4120-8b96-a4d36d7a2b91",
                             TwoFactorEnabled = false,
                             UserName = "Timix"
                         },
@@ -907,15 +907,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "e32bdbc1-1892-4e41-9c69-6fcf8e40635c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d5a4e93-edae-4ae4-8354-ec11dde60cef",
+                            ConcurrencyStamp = "bd97284c-7e58-4f3f-860b-68c6d53febef",
                             Email = "norbi.m@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "NORBI.M@GAMIL.COM",
                             NormalizedUserName = "NORBI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH9MbBi+C9UuUAldpW8kiiEpGrRWUuSOQ3CKF7bH2SDK1f/REQttgFyrXCiQVOhiwQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDRFrzfIG143H3HVHxguEs9I5l0GaKb+hwfX3/VDIozpfWV7WV3bCEHYsYrWdyd0rg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cc41d885-c98d-44fe-bb26-feb7fb61a88f",
+                            SecurityStamp = "fb0ee692-d74c-4a47-818a-4ad0fa6f9097",
                             TwoFactorEnabled = false,
                             UserName = "Norbi"
                         },
@@ -923,15 +923,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "7493442e-646b-41d4-8aa8-8b764c12eb2c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a83d8f0f-a107-457c-84be-c29ba6a996d0",
+                            ConcurrencyStamp = "ebac61b2-4fd1-4ecc-ad65-af85aebfdfd1",
                             Email = "ewarak@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EWARAK@GMAIL.COM",
                             NormalizedUserName = "EWAAAA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBOC05aEVERaB5oGeaLf+z71TJpI5t8BTmt1VOEiKyURYF/ySRu1UJZUC1Rs5TZw9w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH2P3mYJmZan0OlKW8gxz3YMdhkox2bWHAwQyeskF1ok1k8uOgmB3fiFzZrAo7vMIg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1064cb8e-14ac-403d-81f5-8fe30faf09c3",
+                            SecurityStamp = "68e1231c-25b7-486d-b101-a203a3503ce4",
                             TwoFactorEnabled = false,
                             UserName = "Ewaaaa"
                         },
@@ -939,15 +939,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3a339b40-8502-4fa9-89f7-35dd5e2ac4a3",
+                            ConcurrencyStamp = "0d160a1a-685d-4b99-8cef-ce19cfd8cba1",
                             Email = "j.fik@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "J.FIK@GMAIL.COM",
                             NormalizedUserName = "JANEK99",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJSRx+VvuXZsloUbS5Xs/w1pQv6IICnoigeaEINkElIpq1k9UycfsqoNRVG60AmSlw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFgywC9rr5W8PnmrybBItP4z6lZgoRyNFsowX2QihVgKVcF6AOt4pDfoOqu423dBaQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9cf69988-39b2-4aff-ab7d-fec1978b4d0d",
+                            SecurityStamp = "7d0dd088-da81-498d-8523-970bfef49ddf",
                             TwoFactorEnabled = false,
                             UserName = "Janek99"
                         },
@@ -955,15 +955,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "a6592ad5-0033-4d24-b5c7-b5ab43d81836",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6086b367-b92b-4d31-a231-5711478a869d",
+                            ConcurrencyStamp = "c7fd178d-735d-4c0d-932d-e2cef56c6e89",
                             Email = "ewelina99@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EWELINA99@GMAIL.COM",
                             NormalizedUserName = "EWELCIA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFRpExQSnfT9rhkooIMylOfivXUfOSj9q/YPD01D0eoLp5eVk0l5SQ7wVoGotJq5lQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAORKT4C8Oap19PpHE+Zzsz3wCo6ZsDnALUdTCMBMLMfCbNS8dr2+NF7r71DSdvcQA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b3d6950e-be21-4bf3-9931-8494b44cc218",
+                            SecurityStamp = "1e77824b-3d15-4cf3-af36-f6420a0667cf",
                             TwoFactorEnabled = false,
                             UserName = "Ewelcia"
                         },
@@ -971,15 +971,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f5561a97-c2f1-48ff-9fbb-3eaf7ac61b27",
+                            ConcurrencyStamp = "58fc7909-e412-4805-9d68-a2d3746fc110",
                             Email = "wiktoria@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "WIKTORIA@GMAIL.COM",
                             NormalizedUserName = "WIKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA7dNq9dYmfYlO9fwarBM96RfrlM6FUtdhnpdAHZDuB/oF0TtHxm9C1GXaAotd9V2g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECSWiSOxnH69A+p4SW7FhKR/Hn35IxmgaXULJ3X403Djjfy+8ZAhX90Fu8F3ZEFm5A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f4592ff4-8517-4b37-9e57-b64b48753b40",
+                            SecurityStamp = "5892ec31-6b2b-4e9d-bb14-922b26e57456",
                             TwoFactorEnabled = false,
                             UserName = "Wika"
                         },
@@ -987,15 +987,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "0cf44c1c-6a00-4738-b33f-b662cf98cd7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cabfa7af-7923-4576-b7ed-15238c355f47",
+                            ConcurrencyStamp = "8c3b1fb3-0c9d-4c0a-a70b-ca61768848ae",
                             Email = "rzeka.magda@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "RZEKA.MAGDA@GMAIL.COM",
                             NormalizedUserName = "MADZIX",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG5L2jFN2ieMFq1vz5+ViOZzMjBBmKN9oqD+tSgzo+Gs3h4BI8EQf6PAJqz4hddzmw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGbFlqlPkedpfCjKtg+uB75EhcGtws5iCALJN9EeNHWPetdoPGVsQr22j0gR1HXaaA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7453046-def5-403b-b02b-bd98e0bb1cfc",
+                            SecurityStamp = "8ae0ce89-2f0e-4c57-883f-f2bb661ec749",
                             TwoFactorEnabled = false,
                             UserName = "Madzix"
                         },
@@ -1003,15 +1003,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "1e1a1a16-3c37-467f-ac77-e83f3061edd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "159b17f7-5225-4624-8a09-970038ba4cf5",
+                            ConcurrencyStamp = "ed42356a-eaf0-486a-adf5-51b4f193b5e0",
                             Email = "w.wrak@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "W.WRAK@GMAIL.COM",
                             NormalizedUserName = "WERCIA",
-                            PasswordHash = "AQAAAAEAACcQAAAAELufaCMXl3gaku2lGOZUpGejOY3C/Af7hX2rF2G04lLVG88OIOWWQWiCLDFz0wtC5A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJjdAD6xl+Sjymg3yzA4t6QFbdYVKqWPJlvIpxCCpeR/SXJUznPsQGFMmJv69K+IEw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c2d86e9b-56c3-4a29-a5d9-5aebaf1fa98c",
+                            SecurityStamp = "c6eb5631-e0ef-4d5e-82c6-17a2d336b958",
                             TwoFactorEnabled = false,
                             UserName = "Wercia"
                         },
@@ -1019,15 +1019,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "be6063ca-a880-4060-9aa3-fcd577d0bea2",
+                            ConcurrencyStamp = "2d8ca985-dd0a-4752-84fc-5c64629523e1",
                             Email = "marcinp@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MARCINP@GMAIL.COM",
                             NormalizedUserName = "PANMARCIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAENG61JlbqYVlpkdEJjRVNFjC1mFE+1lKmtLB/vL/8SwI7CGWlxLTi3p2NjkmSjBqvA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJzclUnYri1R0JvSw9UjzzzycRKvGfDQnGOz8vxzNseogTUFcqUOSDkj1t+aU3Ug9A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ea3e965b-428e-4bcf-90c0-e043a3cbfc40",
+                            SecurityStamp = "7d17961b-d9a1-45fa-a533-b9ccab3d0e82",
                             TwoFactorEnabled = false,
                             UserName = "PanMarcin"
                         },
@@ -1035,15 +1035,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "fb5fad4f-130e-439a-a74d-e75432c8a5d7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "11fc7411-f535-4313-a845-dc4e5be601c2",
+                            ConcurrencyStamp = "ccd4b8de-2ff8-4035-b9eb-03b8c633e7a5",
                             Email = "znawca@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ZNAWCA@GAMIL.COM",
                             NormalizedUserName = "ZNAWCA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBxYusOEQYOcOu0Xq7ILIYju8iOzYKIIoFG7GmeGaOsrwc02ILfzYONYUKG9bjsBDA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDjGY5fnWiv1HkUxQOATx7rjSBbKk1cwAtF4v8qomaFitU2AgNMqpqfQJwOEmqjd8g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a6723cf4-440d-49bf-87db-39097eb5ae24",
+                            SecurityStamp = "4d395ac7-262b-4571-b8a4-6ddbd1453a4c",
                             TwoFactorEnabled = false,
                             UserName = "Znawca"
                         },
@@ -1051,15 +1051,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "bdf0715a-053f-4d3a-85e5-8013f853107e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "93493796-3256-4ed5-b0b4-d23def9501c3",
+                            ConcurrencyStamp = "261b85c1-7ae6-492d-9c20-d9f31dd01f73",
                             Email = "mirkow@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MIRKOW@GMAIL.COM",
                             NormalizedUserName = "MIREK123",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0TD1w0LSHAiOSDCEZONNUPsbA2oPgj0vl6Ek5pvqe2K//IPIClfh9zh8wcqunBow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIKkA8U7M/E8s/1j3+uWdLdLRqXCWCdEYmRB9pndMQPaBitFWt/rBODorX8iaZGQUg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f3f04872-039b-42e2-aa3d-a63aebff1542",
+                            SecurityStamp = "49e2273f-70f5-495a-b5f6-5ebcba348add",
                             TwoFactorEnabled = false,
                             UserName = "mirek123"
                         },
@@ -1067,15 +1067,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "9c3d4bdf-a2eb-42f5-9b67-07facff0653d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "13834f7b-21be-49a2-bd5c-e88672d10138",
+                            ConcurrencyStamp = "b72a7c64-e1a6-4d26-9f8f-5e9a84deeef3",
                             Email = "enowak@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ENOWAK@GMAIL.COM",
                             NormalizedUserName = "EMILKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOhoahz/fsN5IWizlhMhOntZuRLwLNsg84PE2QQWI2dKQNFQqygtxDjX0jy/mSo4LQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJR5okU5QfjEWbRxXogTi9+3A9tv+1Y6aFwJ9WoZnOeFd5ko+E4vFhcTZggecfhflg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2e0e1d81-8f72-4e85-81d8-8dd91883d023",
+                            SecurityStamp = "b1aca2df-2d4f-4fb0-9408-0c558ae93cfb",
                             TwoFactorEnabled = false,
                             UserName = "Emilka"
                         },
@@ -1083,15 +1083,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "36e158e5-3731-4976-a13f-445fe61fdddd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3402916-90ae-4518-a27a-d96a3a16b261",
+                            ConcurrencyStamp = "bbeaf624-7e06-4098-9434-0bc4b785e682",
                             Email = "jk@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "JK@GMAIL.COM",
                             NormalizedUserName = "JK",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDvHtSG33pC9UyUDs24JB1HqD1vvuYPmUkLSTrGa/ZUMWjqmNo7azkW+iabf9maZqA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN/riufSGKGU2pdc+QgHHn4RIMaB3gZnzH4hf1VAKOEqX8rA3rmr7fI2R9YnDZiEKw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "30d51cd9-8b15-4849-84ef-2d115767938c",
+                            SecurityStamp = "993dada4-3a08-44b3-94a4-347522482000",
                             TwoFactorEnabled = false,
                             UserName = "JK"
                         },
@@ -1099,15 +1099,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7ba808bf-8095-426f-88e5-4cdd45037483",
+                            ConcurrencyStamp = "c0d6b83b-8d8f-4648-ab29-ac6da58b17f1",
                             Email = "znowakowska@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ZNOWAKOWSKA@GMAIL.COM",
                             NormalizedUserName = "ZOSIAA1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAIpD6j7UwcWLBoD7iJMEtrAjXQWSivyyQmbqGR3CC9n2ebZ58Y32Xeqpemzh0+nAw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBbO8b958JESdBC2iH9OWbQPWb190gXUzV2bXrrMzxsNidT42khNjyKc5A+Tesls7w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85f911f9-dae6-498e-ac3d-478d6a2c69fe",
+                            SecurityStamp = "866767a4-98bb-4d62-b389-0ea437fadcd3",
                             TwoFactorEnabled = false,
                             UserName = "Zosiaa1"
                         });
@@ -1141,15 +1141,15 @@ namespace BooksApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "059e5df3-8035-4d0d-8a78-ad043ab5d5ba",
-                            ConcurrencyStamp = "aa244d2f-ab96-4d10-89cc-853660ce5f10",
+                            Id = "cef7780a-7e43-47ab-810c-c04f0114ec01",
+                            ConcurrencyStamp = "5ab10a3d-040e-4054-8f31-aff48f10dca2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d9187272-b557-41b4-a976-04ad0cb5cf5f",
-                            ConcurrencyStamp = "f290d7f7-a0a4-4f81-bb39-fa556cb5cef4",
+                            Id = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0",
+                            ConcurrencyStamp = "578c9d97-d610-47a4-8259-1b7da4bd5036",
                             Name = "Default",
                             NormalizedName = "DEFAULT"
                         });
@@ -1243,97 +1243,97 @@ namespace BooksApi.Migrations
                         new
                         {
                             UserId = "23e1a0ef-4a8a-462a-8219-1d3a1169f417",
-                            RoleId = "059e5df3-8035-4d0d-8a78-ad043ab5d5ba"
+                            RoleId = "cef7780a-7e43-47ab-810c-c04f0114ec01"
                         },
                         new
                         {
                             UserId = "593a9e65-5f4d-40b8-91f5-1813f577ce70",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "509de9d8-a3d5-47d9-a6b2-82c13c5dd216",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "e6f1d790-fa08-4db8-8958-4d8d171193d2",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "7b2e5361-9196-49f7-aa93-9c752fd63f19",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "1e6751b3-ecd8-4835-aee7-29274771601d",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "e32bdbc1-1892-4e41-9c69-6fcf8e40635c",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "7493442e-646b-41d4-8aa8-8b764c12eb2c",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "a6592ad5-0033-4d24-b5c7-b5ab43d81836",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "0cf44c1c-6a00-4738-b33f-b662cf98cd7e",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "1e1a1a16-3c37-467f-ac77-e83f3061edd3",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "fb5fad4f-130e-439a-a74d-e75432c8a5d7",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "bdf0715a-053f-4d3a-85e5-8013f853107e",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "9c3d4bdf-a2eb-42f5-9b67-07facff0653d",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "36e158e5-3731-4976-a13f-445fe61fdddd",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         },
                         new
                         {
                             UserId = "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4",
-                            RoleId = "d9187272-b557-41b4-a976-04ad0cb5cf5f"
+                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
                         });
                 });
 

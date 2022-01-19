@@ -11,6 +11,7 @@ namespace BooksApi.Entity
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Opinion> Opinions { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {

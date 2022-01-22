@@ -21,10 +21,10 @@ namespace BooksApi.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IQueryable<GenreDto> GetGenres()
+        public IQueryable<GenreDetailDto> GetGenres()
         {
             var books = from g in _context.Genres
-                        select new GenreDto()
+                        select new GenreDetailDto()
                         {
                             Id = g.Id,
                             GenreName = g.GenreName
@@ -38,7 +38,7 @@ namespace BooksApi.Controllers
         public async Task<IActionResult> GetGenre(long id)
         {
             var genre = await _context.Genres.Select(g =>
-            new GenreDto()
+            new GenreDetailDto()
             {
                 Id = g.Id,
                 GenreName = g.GenreName
@@ -54,7 +54,7 @@ namespace BooksApi.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> UpdateGenre(long id, GenreDto genreDto)
+        public async Task<IActionResult> UpdateGenre(long id, GenreDetailDto genreDto)
         {
             if (id != genreDto.Id)
             {
@@ -83,7 +83,7 @@ namespace BooksApi.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<GenreDto>> CreateGenre(GenreDto genreDto)
+        public async Task<ActionResult<GenreDetailDto>> CreateGenre(GenreCreateDto genreDto)
         {
             var genre = new Genre
             {

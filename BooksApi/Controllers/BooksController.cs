@@ -93,7 +93,7 @@ namespace BooksApi.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<BookDetailDto>> CreateBook(BookDetailDto bookDto)
+        public async Task<ActionResult<BookDetailDto>> CreateBook(BookCreateDto bookDto)
         {
             var book = new Book
             {
@@ -101,7 +101,7 @@ namespace BooksApi.Controllers
                 Description = bookDto.Description,
                 AuthorId = bookDto.AuthorId,
                 GenreId = bookDto.GenreId
-        };
+            };
 
             _context.Books.Add(book);
             await _context.SaveChangesAsync();

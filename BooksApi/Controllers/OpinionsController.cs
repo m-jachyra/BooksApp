@@ -21,15 +21,13 @@ namespace BooksApi.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IQueryable<OpinionDto> GetOpinion()
+        public IQueryable<OpinionListDto> GetOpinion()
         {
             var opinions = from o in _context.Opinions
-                           select new OpinionDto()
+                           select new OpinionListDto()
                            {
-                               Id = o.Id,
                                Rate = o.Rate,
-                               UserId = o.UserId,
-                               ReviewId = o.ReviewId
+                               Username = o.User.UserName
                            };
 
             return opinions;
@@ -40,7 +38,7 @@ namespace BooksApi.Controllers
         public async Task<IActionResult> GetOpinion(long id)
         {
             var opinion = await _context.Opinions.Select(o =>
-                        new OpinionDto()
+                        new OpinionDetailDto()
                         {
                             Id = o.Id,
                             Rate = o.Rate,
@@ -57,7 +55,7 @@ namespace BooksApi.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> UpdateOpinion(long id, OpinionDto opinionDto)
+        public async Task<IActionResult> UpdateOpinion(long id, OpinionDetailDto opinionDto)
         {
             if (id != opinionDto.Id)
             {
@@ -86,7 +84,7 @@ namespace BooksApi.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<OpinionDto>> CreateOpinion(OpinionDto opinionDto)
+        public async Task<ActionResult<OpinionCreateDto>> CreateOpinion(OpinionCreateDto opinionDto)
         {
             var opinion = new Opinion
             {

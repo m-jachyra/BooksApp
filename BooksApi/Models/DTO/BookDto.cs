@@ -8,6 +8,14 @@
         public string GenreName { get; set; }
     }
 
+    public class BookCreateDto
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public long AuthorId { get; set; }
+        public long GenreId { get; set; }
+    }
+
     public class BookDetailDto
     {
         public long Id { get; set; }

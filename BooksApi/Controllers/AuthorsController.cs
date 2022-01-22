@@ -21,7 +21,7 @@ namespace BooksApi.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public IQueryable<AuthorListDto> GetAuthors()
         {
             var books = from a in _context.Authors
@@ -89,7 +89,7 @@ namespace BooksApi.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<AuthorDetailDto>> CreateAuthor(AuthorDetailDto authorDto)
+        public async Task<ActionResult<AuthorDetailDto>> CreateAuthor(AuthorCreateDto authorDto)
         {
             var author = new Author
             {

@@ -24,9 +24,8 @@ namespace BooksApi.Controllers
         public IQueryable GetReviews()
         {
             var reviews = from r in _context.Reviews
-                          select new ReviewDto()
+                          select new ReviewListDto()
                           {
-                              Id = r.Id,
                               Title = r.Title,
                               Content = r.Content,
                               Rate = r.Rate,
@@ -41,7 +40,7 @@ namespace BooksApi.Controllers
         public async Task<IActionResult> GetReview(long id)
         {
             var review = await _context.Reviews.Select(r =>
-                        new ReviewDto()
+                        new ReviewDetailDto()
                         {
                             Id = r.Id,
                             Title = r.Title,
@@ -60,7 +59,7 @@ namespace BooksApi.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> UpdateReview(long id, ReviewDto reviewDto)
+        public async Task<IActionResult> UpdateReview(long id, ReviewDetailDto reviewDto)
         {
             if (id != reviewDto.Id)
             {
@@ -91,7 +90,7 @@ namespace BooksApi.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<ReviewDto>> CreateReview(ReviewDto reviewDto)
+        public async Task<ActionResult<ReviewCreateDto>> CreateReview(ReviewCreateDto reviewDto)
         {
             var review = new Review
             {

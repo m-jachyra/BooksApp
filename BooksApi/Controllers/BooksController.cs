@@ -29,7 +29,9 @@ namespace BooksApi.Controllers
                         {
                             Id = b.Id,
                             Title = b.Title,
+                            AuthorId = b.AuthorId,
                             AuthorName = b.Author.AuthorName,
+                            GenreId = b.GenreId,
                             GenreName = b.Genre.GenreName
                         };
 

@@ -34,10 +34,11 @@
 
 <script>
 import { reactive } from "@vue/composition-api"
+import { redirectToRoute } from "@/use/router"
 import { useUser } from '@/use/user'
 
 export default {
-  name: 'Login',
+  name: 'ViewLogin',
   setup() {
     const form = reactive({
       username: null,
@@ -47,7 +48,9 @@ export default {
     const { login } = useUser()
 
     const onSubmit = () => {
-      login(form)
+      login(form).then(() => {
+        redirectToRoute('/')
+      })
     }
 
     return {

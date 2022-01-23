@@ -1,25 +1,26 @@
 import { reactive, computed } from "@vue/composition-api"
 import { loginRequest } from "@/api/auth"
+import { decodeToken } from "@/helpers/jwt"
 
 const LOCALSTORAGE_TOKEN_KEY = 'accessToken'
 
 const state = reactive({
-    user: null,
+    user: decodeToken(localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)) || null,
     accessToken: localStorage.getItem(LOCALSTORAGE_TOKEN_KEY),
     requestedRoute: null,
 })
 
 export const setToken = ({token}) => {
+  const decodedToken = decodeToken(token)
+
+  state.user = decodedToken
   state.accessToken = token
   localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, token)
 }
 
 export const login = ({ username, password }) => {
-  loginRequest({ username, password })
+  return loginRequest({ username, password })
     .then(setToken)
-    .catch(err => {
-      console.error('Kurwa nie działa', err)
-    })
 }
 
 export const logout = () => {
@@ -34,11 +35,13 @@ export const getAccessToken = () =>
 export const useUser = () => {
   const user = computed(() => state.user)
   const isUserLogged = computed(() => state.accessToken != null) 
+  const isAdmin = computed(() => state.user.role === 'Admin')
 
   return {
     login,
     logout,
     user,
-    isUserLogged
+    isUserLogged,
+    isAdmin
   }
 }

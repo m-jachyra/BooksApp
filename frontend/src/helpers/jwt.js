@@ -13,3 +13,5 @@ export const isTokenValid = token => {
     return false;
   }
 }
+
+export const decodeToken = token => decode(token)

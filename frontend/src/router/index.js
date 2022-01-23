@@ -1,24 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from "@/views/Home"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'ViewHome',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewHome')
+  },
+  {
+    path: '/detail',
+    name: 'ViewBookDetail',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewBookDetail')
   },
   {
     path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Login')
+    name: 'ViewLogin',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewLogin')
+  },
+  {
+    path: '/register',
+    name: 'ViewRegister',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewRegister')
   },
   {
     path: '/books',
-    name: 'Books',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewBookDetail')
+    name: 'ViewBookList',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewBookList')
+  },
+  {
+    path: '/authors',
+    name: 'ViewAuthorList',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewAuthorList')
   },
   {
     path: '/about',
@@ -27,7 +41,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  },
+  {
+    path: '/admin/books',
+    name: 'ViewAdminBookList',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/admin/ViewAdminBookList')
+  },
 ]
 
 const router = new VueRouter({

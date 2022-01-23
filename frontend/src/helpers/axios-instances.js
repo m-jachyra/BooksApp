@@ -1,8 +1,8 @@
 import axios from "axios"
 import { logout, getAccessToken, setToken } from "@/use/user"
-import { isTokenValid } from "./jwt";
 import { refreshTokenRequest } from "@/api/auth";
 import { redirectToRoute } from "@/use/router";
+import { isTokenValid } from "./jwt";
 
 export const http = axios.create({
     baseURL: `${process.env.VUE_APP_API_PREFIX}/api`
@@ -10,41 +10,42 @@ export const http = axios.create({
 
 // Response interceptor
 http.interceptors.response.use(
-    response => response,
-    error => {
-      if (error.response?.status === 401) {
-        logout()
-        redirectToRoute('/login')
-      }
-      console.error(error.response);
-  
-      return Promise.reject(error);
-    },
-  );
+  response => response,
+  error => {
+    if (error.response?.status === 401) {
+      logout();
+      redirectToRoute('/login')
+    }
+    console.error(error.response); // eslint-disable-line
+
+    return Promise.reject(error);
+  },
+);
 
 // Request interceptor
-http.interceptors.request.use(config => {
+http.interceptors.request.use(async config => {
+  try {
     if (Object.hasOwnProperty.call(config.headers, 'Authorization')) {
-      console.log('jest już Authorization')
       return config;
     }
 
-    console.log('pobieramy access token')
-  
-    const accessToken = getAccessToken();
-    console.log('token jest')
-    if (isTokenValid(accessToken)) {
-      console.log('token jest valid')
-      config.headers.Authorization = `Bearer ${accessToken}`;
-  
+    const authorizationToken = getAccessToken();
+    if (isTokenValid(authorizationToken)) {
+      config.headers.Authorization = `Bearer ${authorizationToken}`;
+
       return config;
     }
 
-    console.log('token nie jest valid, ale może refresh')
-  
-    refreshTokenRequest().then(setToken)
-  
+    const {token} = await refreshTokenRequest();
+    if (isTokenValid(token)) {
+      config.headers.Authorization = `Bearer ${token}`;
+      setToken({token})
+    }
+
     return config;
+  } catch(err) {
+    redirectToRoute('/login')
+  }
 });
 
 export const auth = axios.create({

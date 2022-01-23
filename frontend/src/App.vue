@@ -1,55 +1,39 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+    
+    <LogoutNav v-if="!isUserLogged"></LogoutNav>
+    <template v-else>
+      <UserNav v-if="!isAdmin"></UserNav>
+      <AdminNav v-else></AdminNav>
+    </template>
+    
     <v-main>
-      <router-view/>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import { ref } from "@vue/composition-api";
+import { useUser } from "./use/user";
+import LogoutNav from "./components/LogoutNav.vue";
+import AdminNav from "./components/AdminNav.vue";
+import UserNav from "./components/UserNav.vue";
 
 export default {
-  name: 'App',
+    name: "App",
+    setup() {
+        const sidebar = ref(false);
+        const { isUserLogged, isAdmin } = useUser();
 
-  data: () => ({
-    //
-  }),
+        return {
+            sidebar,
+            isUserLogged,
+            isAdmin,
+        };
+    },
+    components: { LogoutNav, AdminNav, UserNav }
 };
 </script>
+
+<style></style>

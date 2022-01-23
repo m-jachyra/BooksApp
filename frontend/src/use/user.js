@@ -4,9 +4,11 @@ import { decodeToken } from "@/helpers/jwt"
 
 const LOCALSTORAGE_TOKEN_KEY = 'accessToken'
 
+const token = localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)
+
 const state = reactive({
-    user: decodeToken(localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)) || null,
-    accessToken: localStorage.getItem(LOCALSTORAGE_TOKEN_KEY),
+    user: token ? decodeToken(token) : null,
+    accessToken: token,
     requestedRoute: null,
 })
 

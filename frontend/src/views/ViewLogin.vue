@@ -22,6 +22,7 @@
                   label="Password"
                   type="password"
                 ></v-text-field>
+                <p v-if="isError" class="red--text">Wrong username or password.</p>
                 <v-btn color="primary" type="submit">Login</v-btn>
               </form>
             </v-card-text>
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import { reactive } from "@vue/composition-api"
+import { reactive, ref } from "@vue/composition-api"
 import { redirectToRoute } from "@/use/router"
 import { useUser } from '@/use/user'
 
@@ -46,16 +47,22 @@ export default {
     })
 
     const { login } = useUser()
+    const isError = ref(false)
 
     const onSubmit = () => {
+      isError.value = false
       login(form).then(() => {
         redirectToRoute('/')
       })
+      .catch(() => {
+        isError.value = true
+      });
     }
 
     return {
       form,
-      onSubmit
+      onSubmit,
+      isError
     }
   }
 }

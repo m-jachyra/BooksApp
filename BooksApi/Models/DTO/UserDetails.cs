@@ -17,4 +17,9 @@ namespace BooksApi.Models
         [Required]
         public string Email { get; set; }
     }
+
+    public class UserReviewDto
+    {
+        public string Username { get; set; }
+    }
 }

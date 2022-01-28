@@ -25,15 +25,15 @@
       </v-btn>
       <v-btn
         text
-        to="/reviews">
-        <v-icon left dark>mdi-star</v-icon>
-        Reviews
+        to="/genres">
+        <v-icon left dark>mdi-apple-finder</v-icon>
+        Genres
       </v-btn>
       <v-btn
         text
-        to="/users">
-        <v-icon left dark>mdi-account</v-icon>
-        Users
+        to="/reviews">
+        <v-icon left dark>mdi-star</v-icon>
+        Reviews
       </v-btn>
       <v-btn
         text

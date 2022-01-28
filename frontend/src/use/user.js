@@ -1,14 +1,14 @@
 import { reactive, computed } from "@vue/composition-api"
 import { loginRequest } from "@/api/auth"
-import { decodeToken } from "@/helpers/jwt"
+import { decodeToken, isTokenValid } from "@/helpers/jwt"
 
 const LOCALSTORAGE_TOKEN_KEY = 'accessToken'
 
 const token = localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)
 
 const state = reactive({
-    user: token ? decodeToken(token) : null,
-    accessToken: token,
+    user: isTokenValid(token) ? decodeToken(token) : null,
+    accessToken: isTokenValid(token) ? token : null,
     requestedRoute: null,
 })
 

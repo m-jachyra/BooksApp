@@ -29,10 +29,16 @@ namespace BooksApi.Controllers
                         {
                             Id = b.Id,
                             Title = b.Title,
-                            AuthorId = b.AuthorId,
-                            AuthorName = b.Author.AuthorName,
-                            GenreId = b.GenreId,
-                            GenreName = b.Genre.GenreName
+                            Author = new AuthorListDto
+                            {
+                                Id = b.Author.Id,
+                                Name = b.Author.AuthorName
+                            },
+                            Genre = new GenreDetailDto
+                            {
+                                Id = b.Genre.Id,
+                                Name = b.Genre.GenreName
+                            }
                         };
 
             return books;
@@ -47,10 +53,17 @@ namespace BooksApi.Controllers
                         {
                             Id = b.Id,
                             Title = b.Title,
-                            AuthorId = b.Author.Id,
-                            AuthorName = b.Author.AuthorName,
-                            GenreId = b.Genre.Id,
-                            GenreName = b.Genre.GenreName
+                            Description = b.Description,
+                            Author = new AuthorListDto
+                            {
+                                Id = b.Author.Id,
+                                Name = b.Author.AuthorName
+                            },
+                            Genre = new GenreDetailDto
+                            {
+                                Id = b.Genre.Id,
+                                Name = b.Genre.GenreName
+                            }
                         }).SingleOrDefaultAsync(b => b.Id == id);
 
             if (book == null)
@@ -67,19 +80,19 @@ namespace BooksApi.Controllers
         {
             if (id != bookDto.Id)
             {
-                return BadRequest();
+                return BadRequest($"Bad Id {id} != {bookDto.Id}");
             }
 
             var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
-                return NotFound();
+                return NotFound("No Book with that Id");
             }
 
             book.Title = bookDto.Title;
             book.Description = bookDto.Description;
-            book.AuthorId = bookDto.AuthorId;
-            book.GenreId = bookDto.GenreId;
+            book.AuthorId = bookDto.Author.Id;
+            book.GenreId = bookDto.Genre.Id;
 
             try
             {
@@ -101,8 +114,8 @@ namespace BooksApi.Controllers
             {
                 Title = bookDto.Title,
                 Description = bookDto.Description,
-                AuthorId = bookDto.AuthorId,
-                GenreId = bookDto.GenreId
+                AuthorId = bookDto.Author.Id,
+                GenreId = bookDto.Genre.Id
             };
 
             _context.Books.Add(book);
@@ -114,7 +127,7 @@ namespace BooksApi.Controllers
                 book);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteBook(long id)
         {
@@ -131,21 +144,25 @@ namespace BooksApi.Controllers
             return NoContent();
         }
 
-        [HttpGet("{id}/image")]
+        [HttpGet("{id}/reviews")]
         [AllowAnonymous]
-        public IActionResult Image(long id)
+        public IQueryable<ReviewListDto> GetReviews(long id)
         {
-            FileStream image;
-            try
-            {
-                image = System.IO.File.OpenRead($"C:\\images\\books\\{id}.PNG");
-            }
-            catch
-            {
-                image = System.IO.File.OpenRead("C:\\images\\books\\default.PNG");
-            };
+            var reviews = from r in _context.Reviews
+                          where r.BookId == id
+                          select new ReviewListDto()
+                          {
+                              Id = r.Id,
+                              Title = r.Title,
+                              Content = r.Content,
+                              Rate = r.Rate,
+                              User = new UserReviewDto
+                              {
+                                  Username = r.User.UserName
+                              }
+                          };
 
-            return File(image, "image/png");
+            return reviews;
         }
 
         private bool BookExists(long id)

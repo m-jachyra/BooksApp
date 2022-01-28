@@ -1,33 +1,36 @@
 <template>
-<v-container class="pa-4 text-center">
-  
+<v-container>
+  <AdminAuthorList v-if="isAdmin"></AdminAuthorList>
+  <UserAuthorList v-else></UserAuthorList>
 </v-container>
 </template>
 
 <script>
 import { ref } from "@vue/composition-api"
 import { http } from "../helpers/axios-instances"
+import AdminAuthorList from "../components/AdminAuthorList.vue"
+import { useUser } from "../use/user";
+import UserAuthorList from "../components/UserAuthorList.vue";
 
 export default {
-  name: 'ViewAuthorList',
+  name: "ViewAuthorList",
   setup() {
-    const authors = ref([])
-
-    http.get('/books')
-      .then((response) => response.data)
-      .then((data) => {
-        authors.value = data
-        console.log(authors.value)
+    const authors = ref([]);
+    http.get("/books")
+      .then((response) => {
+        authors.value = response.data
       })
 
     const replaceByDefault = event => {
-      event.target.src = '/images/authors/default.png'
-    }
-
+      event.target.src = "/images/authors/default.png";
+    };
+    const { isAdmin } = useUser()
     return {
       authors,
-      replaceByDefault
-    }
-  }
+      replaceByDefault,
+      isAdmin
+    };
+  },
+  components: { AdminAuthorList, UserAuthorList }
 }
 </script>

@@ -2,10 +2,11 @@
 {
     public class ReviewListDto
     {
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public int Rate { get; set; }
-        public string Username { get; set; }
+        public UserReviewDto User { get; set; }
     }
 
     public class ReviewDetailDto

@@ -32,7 +32,7 @@
                   @click:append="show1 = !show1"
                 ></v-text-field>
                 <v-text-field
-                  v-model="form.confirmPassword"
+                  v-model="confirmpassword"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="[rules.required, rules.min, rules.passwordMatch]"
                   :type="show1 ? 'text' : 'password'"
@@ -53,7 +53,8 @@
 
 <script>
 import { reactive, ref } from "@vue/composition-api"
-import { useUser } from '@/use/user'
+import { auth } from "../helpers/axios-instances"
+import { redirectToRoute } from "../use/router"
 
 export default {
   name: 'ViewRegister',
@@ -62,21 +63,21 @@ export default {
     const show2 = ref(false)
     const rules = ref({
       required: value => !!value || 'Required.',
-      min: v => v.length >= 8 || 'Min 8 characters',
+      min: v => v.length >= 6 || 'Min 6 characters',
       passwordMatch: v => v === form.password || `Password confirmation does not match`,
     })
 
     const form = reactive({
-      username: null,
-      email: null,
-      password: null,
-      confirmPassword: null,
+      userName: '',
+      password: '',
+      email: '',
     })
 
-    const { login } = useUser()
+    const confirmpassword = ref('')
 
-    const onSubmit = () => {
-      login(form)
+    const onSubmit = async () => {
+      await auth.post('/register', form)
+      redirectToRoute('/login')
     }
 
     return {
@@ -84,7 +85,8 @@ export default {
       show2,
       rules,
       form,
-      onSubmit
+      onSubmit,
+      confirmpassword
     }
   }
 }

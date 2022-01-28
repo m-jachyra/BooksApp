@@ -24,23 +24,29 @@ namespace BooksApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("AuthorName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("author_name");
 
                     b.Property<string>("Biography")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("biography");
 
                     b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("birth_date");
 
                     b.Property<DateTime?>("DeathDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("death_date");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_authors");
 
-                    b.ToTable("Authors");
+                    b.ToTable("authors");
 
                     b.HasData(
                         new
@@ -161,27 +167,35 @@ namespace BooksApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<long>("AuthorId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("author_id");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<long>("GenreId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("genre_id");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("title");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_books");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("AuthorId")
+                        .HasDatabaseName("ix_books_author_id");
 
-                    b.HasIndex("GenreId");
+                    b.HasIndex("GenreId")
+                        .HasDatabaseName("ix_books_genre_id");
 
-                    b.ToTable("Books");
+                    b.ToTable("books");
 
                     b.HasData(
                         new
@@ -327,14 +341,17 @@ namespace BooksApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("GenreName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("genre_name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_genres");
 
-                    b.ToTable("Genres");
+                    b.ToTable("genres");
 
                     b.HasData(
                         new
@@ -379,24 +396,31 @@ namespace BooksApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("Rate")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("rate");
 
                     b.Property<long>("ReviewId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("review_id");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_opinions");
 
-                    b.HasIndex("ReviewId");
+                    b.HasIndex("ReviewId")
+                        .HasDatabaseName("ix_opinions_review_id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_opinions_user_id");
 
-                    b.ToTable("Opinions");
+                    b.ToTable("opinions");
 
                     b.HasData(
                         new
@@ -525,34 +549,44 @@ namespace BooksApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("CreatedByIp")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("created_by_ip");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created_on");
 
                     b.Property<DateTime>("ExpiryOn")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("expiry_on");
 
                     b.Property<string>("RevokedByIp")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("revoked_by_ip");
 
                     b.Property<DateTime>("RevokedOn")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("revoked_on");
 
                     b.Property<string>("Token")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("token");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_refresh_tokens");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_refresh_tokens_user_id");
 
-                    b.ToTable("RefreshTokens");
+                    b.ToTable("refresh_tokens");
                 });
 
             modelBuilder.Entity("BooksApi.Models.Review", b =>
@@ -560,30 +594,39 @@ namespace BooksApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<long>("BookId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("book_id");
 
                     b.Property<string>("Content")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("content");
 
                     b.Property<int>("Rate")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("rate");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("title");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_reviews");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("BookId")
+                        .HasDatabaseName("ix_reviews_book_id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_reviews_user_id");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("reviews");
 
                     b.HasData(
                         new
@@ -744,56 +787,72 @@ namespace BooksApi.Migrations
             modelBuilder.Entity("BooksApi.Models.User", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("id");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("access_failed_count");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("concurrency_stamp");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("email");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("email_confirmed");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("lockout_enabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("lockout_end");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("normalized_email");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("normalized_user_name");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("password_hash");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("phone_number");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("phone_number_confirmed");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("security_stamp");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("two_factor_enabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("user_name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_asp_net_users");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -809,15 +868,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "23e1a0ef-4a8a-462a-8219-1d3a1169f417",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f8c1f8d-ea3c-455c-8865-9a19cd32569a",
+                            ConcurrencyStamp = "27527afe-597c-4168-b9c2-f4f3647be4bb",
                             Email = "stafano@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "STAFANO@GMAIL.COM",
                             NormalizedUserName = "STEFFFANO1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAHFYHGeTTlZ4xTbt8KltK1pAvIWf+CmJ2jA1BucMApcnwKbC7kiJJZM+MNhYx9Log==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFn8DM+2v/OXyw1Q09NQSY2fuob11fORhffAxP494JDwRBSzgn7O2LyCFgnz18aJMQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f9f964a-88e8-45db-800a-57642d900501",
+                            SecurityStamp = "eaf4a1da-81c5-4f78-a675-fff0cfe673b0",
                             TwoFactorEnabled = false,
                             UserName = "Stefffano1"
                         },
@@ -825,15 +884,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "593a9e65-5f4d-40b8-91f5-1813f577ce70",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b538d2a5-7e17-41d6-bdda-6794a6456698",
+                            ConcurrencyStamp = "f32f51cb-457e-43d1-9332-4eb5b63bb011",
                             Email = "martink@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MARTINK@GMAIL.COM",
                             NormalizedUserName = "MARTINX",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIbHNTScInLCzoPo/sIPgeSvPFNTk/N3g6lWMytqWezvjX08rHU8uIc1+wzgisQNYA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJCdpr6gxYM+5a71VKXL3KkytAellVUBEOb/zKcd51hf+iknkojq98o+3f4vvQzRJQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "43c5c256-d308-4bd9-b586-834397eacd16",
+                            SecurityStamp = "6ab0ad70-5130-482a-9614-4e4e139442aa",
                             TwoFactorEnabled = false,
                             UserName = "Martinx"
                         },
@@ -841,15 +900,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "509de9d8-a3d5-47d9-a6b2-82c13c5dd216",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "02719bdd-70e8-4888-9885-4eea21513f20",
+                            ConcurrencyStamp = "75257521-91e3-4b3d-9baa-9563d63a34ff",
                             Email = "mich@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MICH@GMAIL.COM",
                             NormalizedUserName = "MICHAELLLO",
-                            PasswordHash = "AQAAAAEAACcQAAAAENsOwHoexrbamG2Eg+jm9vrowRjcb/Hs9N4TSAP3Jgrt2GJ1BH3pBlk8xtZDewUKhg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDuCbugX2jqGb0mGC19HICtu136TxedTbTrAuzi6APTw6KKzOHSdbFV+qZcolWNDGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "77462246-3813-45e9-a9cf-71351303dec4",
+                            SecurityStamp = "7f0e80ff-c8fc-44b4-af0b-b33ce9635998",
                             TwoFactorEnabled = false,
                             UserName = "Michaelllo"
                         },
@@ -857,15 +916,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "e6f1d790-fa08-4db8-8958-4d8d171193d2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b7e74cf8-5ae9-4176-ab9f-7959f939b819",
+                            ConcurrencyStamp = "22e18ba4-4f92-47ac-adc0-12a927b4dfb5",
                             Email = "a.one@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "A.ONE@GMAIL.COM",
                             NormalizedUserName = "ANNA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAnjlD3KIOY2Xgpq3zKmV6HmKNzBk+f4Cg0SBUqg1jZmH4fcQwOq0QBU1/AqZiLPlA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHV8KUWC7A4VREnUKJzo9ylHARgTUkVlykOfrnyow3rNkVno5gSIGvt9et9ygbYwrw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b347cdea-f8eb-4f43-96ae-69cc410184d2",
+                            SecurityStamp = "069ae22b-9a07-4c51-97e3-75048773de71",
                             TwoFactorEnabled = false,
                             UserName = "Anna"
                         },
@@ -873,15 +932,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "7b2e5361-9196-49f7-aa93-9c752fd63f19",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5f7ca58e-615a-4721-b79c-1fb954cd20ee",
+                            ConcurrencyStamp = "09dc51ea-410b-438d-bb29-a0bf5ad34053",
                             Email = "sara12@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SARA12@GMAIL.COM",
                             NormalizedUserName = "SARA12",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB1oCK8TJdhRtUF1/zrUmi0/fyW8JtqbvGKKLyJK10GMPFAJXyQQqkhy+Dn8iLlzng==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHaUwvMC1isLzF72LW3mHv/Cf2mrR2h6+ZZHPu8fAzZNchgiBolu6lnmrB8RiJrDnA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3d659a3b-a923-4f27-8b57-1faa975dfaf9",
+                            SecurityStamp = "792b914e-6807-4193-a822-2791231d66eb",
                             TwoFactorEnabled = false,
                             UserName = "Sara12"
                         },
@@ -889,15 +948,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "1e6751b3-ecd8-4835-aee7-29274771601d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a0dc2f08-9294-44d5-8c68-254e7de85c3c",
+                            ConcurrencyStamp = "def66562-abb7-414f-934b-ed3c2737cdd9",
                             Email = "t.smith@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "T.SMITH@GMAIL.COM",
                             NormalizedUserName = "TIMIX",
-                            PasswordHash = "AQAAAAEAACcQAAAAENUx8dIbE2A7Fl6aGLhBPyDh5I8Awj3IhOeLrjG4io1vluRKvQKlLS6Tz7mhwV7zOg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHbGGAE3QPUcqqGSFZ9NyJw9CKEWbTUlxbr2Jym3QtXxYpvCKvOd9hySwaqJHCTP0Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fefd15f8-0277-4120-8b96-a4d36d7a2b91",
+                            SecurityStamp = "0401aa18-0ac7-4982-ba58-cf437dff6beb",
                             TwoFactorEnabled = false,
                             UserName = "Timix"
                         },
@@ -905,15 +964,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "e32bdbc1-1892-4e41-9c69-6fcf8e40635c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd97284c-7e58-4f3f-860b-68c6d53febef",
+                            ConcurrencyStamp = "c0fca701-c08f-4038-acc9-ce5218e606d0",
                             Email = "norbi.m@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "NORBI.M@GAMIL.COM",
                             NormalizedUserName = "NORBI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDRFrzfIG143H3HVHxguEs9I5l0GaKb+hwfX3/VDIozpfWV7WV3bCEHYsYrWdyd0rg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMbYo6toxQgijBT7Co8Or6PtPF8HqE2mYBIBAhs6O8XaI3LlvYCMgcVKfifsspcdCA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fb0ee692-d74c-4a47-818a-4ad0fa6f9097",
+                            SecurityStamp = "049e1d8f-b1db-451b-b7c1-471117770d1c",
                             TwoFactorEnabled = false,
                             UserName = "Norbi"
                         },
@@ -921,15 +980,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "7493442e-646b-41d4-8aa8-8b764c12eb2c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ebac61b2-4fd1-4ecc-ad65-af85aebfdfd1",
+                            ConcurrencyStamp = "022d5d06-4643-4289-8975-010e1f90dd15",
                             Email = "ewarak@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EWARAK@GMAIL.COM",
                             NormalizedUserName = "EWAAAA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH2P3mYJmZan0OlKW8gxz3YMdhkox2bWHAwQyeskF1ok1k8uOgmB3fiFzZrAo7vMIg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEISYocpoScEDzRw5bKmvjH7arL8IEwG+AC27t8uuW/My8my41aIYQGGq/8hZR56WoA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "68e1231c-25b7-486d-b101-a203a3503ce4",
+                            SecurityStamp = "cb096deb-7aac-42c8-a368-634ff6b96700",
                             TwoFactorEnabled = false,
                             UserName = "Ewaaaa"
                         },
@@ -937,15 +996,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d160a1a-685d-4b99-8cef-ce19cfd8cba1",
+                            ConcurrencyStamp = "d5abaedc-f8e3-4fd0-a9e3-7ff0977d1285",
                             Email = "j.fik@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "J.FIK@GMAIL.COM",
                             NormalizedUserName = "JANEK99",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFgywC9rr5W8PnmrybBItP4z6lZgoRyNFsowX2QihVgKVcF6AOt4pDfoOqu423dBaQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPkvkfuimMOIIClkAQ6VG4RZqT8Pg2G45GK/wb/luHmyB73TGg3T2o4K3/YGTTXlpw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7d0dd088-da81-498d-8523-970bfef49ddf",
+                            SecurityStamp = "02215d43-acba-400b-810e-8f04cdc35eab",
                             TwoFactorEnabled = false,
                             UserName = "Janek99"
                         },
@@ -953,15 +1012,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "a6592ad5-0033-4d24-b5c7-b5ab43d81836",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7fd178d-735d-4c0d-932d-e2cef56c6e89",
+                            ConcurrencyStamp = "1e733f4b-a9d9-4daa-b783-cfcca6ed37e8",
                             Email = "ewelina99@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EWELINA99@GMAIL.COM",
                             NormalizedUserName = "EWELCIA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAORKT4C8Oap19PpHE+Zzsz3wCo6ZsDnALUdTCMBMLMfCbNS8dr2+NF7r71DSdvcQA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJHN3GRxDq8Sv1olTMUrpgFr6Jl8Fq9rMvxAFbNL9oE0GHrnye7uFpaKr3TjNif3Hw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1e77824b-3d15-4cf3-af36-f6420a0667cf",
+                            SecurityStamp = "c4bc0b75-62e9-41a2-9623-a08ad9c978c4",
                             TwoFactorEnabled = false,
                             UserName = "Ewelcia"
                         },
@@ -969,15 +1028,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "58fc7909-e412-4805-9d68-a2d3746fc110",
+                            ConcurrencyStamp = "6d427e04-ffba-445b-b4c4-ee892535fef0",
                             Email = "wiktoria@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "WIKTORIA@GMAIL.COM",
                             NormalizedUserName = "WIKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAECSWiSOxnH69A+p4SW7FhKR/Hn35IxmgaXULJ3X403Djjfy+8ZAhX90Fu8F3ZEFm5A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJsLzEGp56jZj5JQJnfKvRsAr9qz6igL7sUSTMgwegcnv6B07n3uLrYmKEOTqJ7EoA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5892ec31-6b2b-4e9d-bb14-922b26e57456",
+                            SecurityStamp = "fc33d9a4-3245-49b6-bb93-aa467fdb340a",
                             TwoFactorEnabled = false,
                             UserName = "Wika"
                         },
@@ -985,15 +1044,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "0cf44c1c-6a00-4738-b33f-b662cf98cd7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8c3b1fb3-0c9d-4c0a-a70b-ca61768848ae",
+                            ConcurrencyStamp = "223d8eb4-ff33-43d7-a600-9b937a139f24",
                             Email = "rzeka.magda@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "RZEKA.MAGDA@GMAIL.COM",
                             NormalizedUserName = "MADZIX",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGbFlqlPkedpfCjKtg+uB75EhcGtws5iCALJN9EeNHWPetdoPGVsQr22j0gR1HXaaA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBjCyCLzQ0t3jO+DtygEYc7C9aZSfrn38le2qagOQyAHirFIUrKgk2O1HO8iW4snSw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8ae0ce89-2f0e-4c57-883f-f2bb661ec749",
+                            SecurityStamp = "34f8855b-4418-4fc8-9fa6-8cdad3232004",
                             TwoFactorEnabled = false,
                             UserName = "Madzix"
                         },
@@ -1001,15 +1060,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "1e1a1a16-3c37-467f-ac77-e83f3061edd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ed42356a-eaf0-486a-adf5-51b4f193b5e0",
+                            ConcurrencyStamp = "fd93bfa3-c230-4611-a97c-66db08cc225b",
                             Email = "w.wrak@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "W.WRAK@GMAIL.COM",
                             NormalizedUserName = "WERCIA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJjdAD6xl+Sjymg3yzA4t6QFbdYVKqWPJlvIpxCCpeR/SXJUznPsQGFMmJv69K+IEw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ0QTrr3tq3xGFb8CGKPjNfYzgz5IV2IPoPxMv2DmrsFalgEABfjcyuGCED7nVVUnQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c6eb5631-e0ef-4d5e-82c6-17a2d336b958",
+                            SecurityStamp = "4a76a077-8ead-4489-a5c4-099d8fc08495",
                             TwoFactorEnabled = false,
                             UserName = "Wercia"
                         },
@@ -1017,15 +1076,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2d8ca985-dd0a-4752-84fc-5c64629523e1",
+                            ConcurrencyStamp = "70d51279-8a9c-4dff-b8d8-4b9501b6ceff",
                             Email = "marcinp@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MARCINP@GMAIL.COM",
                             NormalizedUserName = "PANMARCIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJzclUnYri1R0JvSw9UjzzzycRKvGfDQnGOz8vxzNseogTUFcqUOSDkj1t+aU3Ug9A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKXzNCkvltlpuxKRh44zsGL0BhcQSN1YKY91Xr+rReWu1jNL4eR9TNdN/RqOmEpASQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7d17961b-d9a1-45fa-a533-b9ccab3d0e82",
+                            SecurityStamp = "5aaed874-ddd5-4ca1-9e5f-141888e72582",
                             TwoFactorEnabled = false,
                             UserName = "PanMarcin"
                         },
@@ -1033,15 +1092,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "fb5fad4f-130e-439a-a74d-e75432c8a5d7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ccd4b8de-2ff8-4035-b9eb-03b8c633e7a5",
+                            ConcurrencyStamp = "321d9d02-d042-47b7-9642-6c812f9e502e",
                             Email = "znawca@gamil.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ZNAWCA@GAMIL.COM",
                             NormalizedUserName = "ZNAWCA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDjGY5fnWiv1HkUxQOATx7rjSBbKk1cwAtF4v8qomaFitU2AgNMqpqfQJwOEmqjd8g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDl5dbRzWQJRxxR9xb+yizUQy2R1snR56uTlfuSynZuepIL59lOcvX+iin17lQU+QA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d395ac7-262b-4571-b8a4-6ddbd1453a4c",
+                            SecurityStamp = "57dd3824-214f-4d84-be18-6e18ced29983",
                             TwoFactorEnabled = false,
                             UserName = "Znawca"
                         },
@@ -1049,15 +1108,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "bdf0715a-053f-4d3a-85e5-8013f853107e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "261b85c1-7ae6-492d-9c20-d9f31dd01f73",
+                            ConcurrencyStamp = "9c883a3a-a9e9-49b9-aff5-3455c87d64be",
                             Email = "mirkow@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MIRKOW@GMAIL.COM",
                             NormalizedUserName = "MIREK123",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIKkA8U7M/E8s/1j3+uWdLdLRqXCWCdEYmRB9pndMQPaBitFWt/rBODorX8iaZGQUg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJy1DVTKjXrlq2AszPFr6WHfVXkDESKa33WWP5L54VFKChptEdxzkcTIF+UdNVUg2A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "49e2273f-70f5-495a-b5f6-5ebcba348add",
+                            SecurityStamp = "c4d0adb5-35fa-427b-999a-4aead0ebc367",
                             TwoFactorEnabled = false,
                             UserName = "mirek123"
                         },
@@ -1065,15 +1124,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "9c3d4bdf-a2eb-42f5-9b67-07facff0653d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b72a7c64-e1a6-4d26-9f8f-5e9a84deeef3",
+                            ConcurrencyStamp = "82e55b13-47b7-4580-8d22-234ff412d53f",
                             Email = "enowak@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ENOWAK@GMAIL.COM",
                             NormalizedUserName = "EMILKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJR5okU5QfjEWbRxXogTi9+3A9tv+1Y6aFwJ9WoZnOeFd5ko+E4vFhcTZggecfhflg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBFMouagAuWwYuM+WVK2b3TBoI8Ty3JYJCS9j+nG4e4LhZ9YSb5WpCLmhE4cezD0tw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b1aca2df-2d4f-4fb0-9408-0c558ae93cfb",
+                            SecurityStamp = "31b45280-8ee9-4250-a39e-8dc3d806603b",
                             TwoFactorEnabled = false,
                             UserName = "Emilka"
                         },
@@ -1081,15 +1140,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "36e158e5-3731-4976-a13f-445fe61fdddd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bbeaf624-7e06-4098-9434-0bc4b785e682",
+                            ConcurrencyStamp = "3591a375-879e-495c-ac16-d03e8e7bd933",
                             Email = "jk@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "JK@GMAIL.COM",
                             NormalizedUserName = "JK",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN/riufSGKGU2pdc+QgHHn4RIMaB3gZnzH4hf1VAKOEqX8rA3rmr7fI2R9YnDZiEKw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENMtz/1HJe9mFAFM+LjiGKGM2YFgWGulXt36XvWk1sUR8cdwEEekI3dBi51KBOwuHQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "993dada4-3a08-44b3-94a4-347522482000",
+                            SecurityStamp = "88125554-9ea9-48c1-b6cb-5e3a84204227",
                             TwoFactorEnabled = false,
                             UserName = "JK"
                         },
@@ -1097,15 +1156,15 @@ namespace BooksApi.Migrations
                         {
                             Id = "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c0d6b83b-8d8f-4648-ab29-ac6da58b17f1",
+                            ConcurrencyStamp = "985af9ad-a0df-43a0-969b-93c552355c87",
                             Email = "znowakowska@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ZNOWAKOWSKA@GMAIL.COM",
                             NormalizedUserName = "ZOSIAA1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBbO8b958JESdBC2iH9OWbQPWb190gXUzV2bXrrMzxsNidT42khNjyKc5A+Tesls7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHeoVf+9C2CMnK5rrL+914FaZoF+IvWcO90m8q88nbgnY4vQY8ScAP9BBuv+eod9XA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "866767a4-98bb-4d62-b389-0ea437fadcd3",
+                            SecurityStamp = "f3498322-9098-4434-a7ad-52d7fdfdc8dd",
                             TwoFactorEnabled = false,
                             UserName = "Zosiaa1"
                         });
@@ -1114,21 +1173,26 @@ namespace BooksApi.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("id");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("concurrency_stamp");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("name");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("normalized_name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_asp_net_roles");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
@@ -1139,15 +1203,15 @@ namespace BooksApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cef7780a-7e43-47ab-810c-c04f0114ec01",
-                            ConcurrencyStamp = "5ab10a3d-040e-4054-8f31-aff48f10dca2",
+                            Id = "da6486af-ab27-48f0-9ad5-1a5f047cd292",
+                            ConcurrencyStamp = "3311e92e-bbee-480e-b964-605873c86602",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0",
-                            ConcurrencyStamp = "578c9d97-d610-47a4-8259-1b7da4bd5036",
+                            Id = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d",
+                            ConcurrencyStamp = "e584e22c-f9d7-4176-aeae-4b97f8b95bbe",
                             Name = "Default",
                             NormalizedName = "DEFAULT"
                         });
@@ -1158,21 +1222,27 @@ namespace BooksApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("claim_type");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("claim_value");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("role_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_asp_net_role_claims");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("RoleId")
+                        .HasDatabaseName("ix_asp_net_role_claims_role_id");
 
                     b.ToTable("AspNetRoleClaims");
                 });
@@ -1182,21 +1252,27 @@ namespace BooksApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("claim_type");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("claim_value");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_asp_net_user_claims");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_asp_net_user_claims_user_id");
 
                     b.ToTable("AspNetUserClaims");
                 });
@@ -1204,21 +1280,27 @@ namespace BooksApi.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("login_provider");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("provider_key");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("provider_display_name");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
-                    b.HasKey("LoginProvider", "ProviderKey");
+                    b.HasKey("LoginProvider", "ProviderKey")
+                        .HasName("pk_asp_net_user_logins");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_asp_net_user_logins_user_id");
 
                     b.ToTable("AspNetUserLogins");
                 });
@@ -1226,14 +1308,18 @@ namespace BooksApi.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("role_id");
 
-                    b.HasKey("UserId", "RoleId");
+                    b.HasKey("UserId", "RoleId")
+                        .HasName("pk_asp_net_user_roles");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("RoleId")
+                        .HasDatabaseName("ix_asp_net_user_roles_role_id");
 
                     b.ToTable("AspNetUserRoles");
 
@@ -1241,115 +1327,120 @@ namespace BooksApi.Migrations
                         new
                         {
                             UserId = "23e1a0ef-4a8a-462a-8219-1d3a1169f417",
-                            RoleId = "cef7780a-7e43-47ab-810c-c04f0114ec01"
+                            RoleId = "da6486af-ab27-48f0-9ad5-1a5f047cd292"
                         },
                         new
                         {
                             UserId = "593a9e65-5f4d-40b8-91f5-1813f577ce70",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "509de9d8-a3d5-47d9-a6b2-82c13c5dd216",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "e6f1d790-fa08-4db8-8958-4d8d171193d2",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "7b2e5361-9196-49f7-aa93-9c752fd63f19",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "1e6751b3-ecd8-4835-aee7-29274771601d",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "e32bdbc1-1892-4e41-9c69-6fcf8e40635c",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "7493442e-646b-41d4-8aa8-8b764c12eb2c",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "4be99f35-6aa1-46b4-b0d0-2c0a6545a9e2",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "a6592ad5-0033-4d24-b5c7-b5ab43d81836",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "c907b3e5-3ebc-4bf0-a733-b01c75ba8d77",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "0cf44c1c-6a00-4738-b33f-b662cf98cd7e",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "1e1a1a16-3c37-467f-ac77-e83f3061edd3",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "1fe1d8b9-40b4-4d21-9ec3-747b25fe0316",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "fb5fad4f-130e-439a-a74d-e75432c8a5d7",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "bdf0715a-053f-4d3a-85e5-8013f853107e",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "9c3d4bdf-a2eb-42f5-9b67-07facff0653d",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "36e158e5-3731-4976-a13f-445fe61fdddd",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         },
                         new
                         {
                             UserId = "f2bb93f0-3f5b-4918-9462-1d5ba0059ab4",
-                            RoleId = "4b6245b3-7d2d-45ed-8c3b-af692f3363b0"
+                            RoleId = "fdcebb1b-b431-4f4d-98ba-a986b6a4990d"
                         });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("login_provider");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("value");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("UserId", "LoginProvider", "Name")
+                        .HasName("pk_asp_net_user_tokens");
 
                     b.ToTable("AspNetUserTokens");
                 });
@@ -1359,12 +1450,14 @@ namespace BooksApi.Migrations
                     b.HasOne("BooksApi.Models.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
+                        .HasConstraintName("fk_books_authors_author_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BooksApi.Models.Genre", "Genre")
                         .WithMany("Books")
                         .HasForeignKey("GenreId")
+                        .HasConstraintName("fk_books_genres_genre_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1378,12 +1471,14 @@ namespace BooksApi.Migrations
                     b.HasOne("BooksApi.Models.Review", "Review")
                         .WithMany("ReviewOpinions")
                         .HasForeignKey("ReviewId")
+                        .HasConstraintName("fk_opinions_reviews_review_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BooksApi.Models.User", "User")
                         .WithMany("ReviewOpinions")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("fk_opinions_users_user_id");
 
                     b.Navigation("Review");
 
@@ -1394,7 +1489,8 @@ namespace BooksApi.Migrations
                 {
                     b.HasOne("BooksApi.Models.User", null)
                         .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("fk_refresh_tokens_users_user_id");
                 });
 
             modelBuilder.Entity("BooksApi.Models.Review", b =>
@@ -1402,12 +1498,14 @@ namespace BooksApi.Migrations
                     b.HasOne("BooksApi.Models.Book", "Book")
                         .WithMany()
                         .HasForeignKey("BookId")
+                        .HasConstraintName("fk_reviews_books_book_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BooksApi.Models.User", "User")
                         .WithMany("Reviews")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("fk_reviews_users_user_id");
 
                     b.Navigation("Book");
 
@@ -1419,6 +1517,7 @@ namespace BooksApi.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
+                        .HasConstraintName("fk_asp_net_role_claims_asp_net_roles_role_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1428,6 +1527,7 @@ namespace BooksApi.Migrations
                     b.HasOne("BooksApi.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .HasConstraintName("fk_asp_net_user_claims_asp_net_users_user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1437,6 +1537,7 @@ namespace BooksApi.Migrations
                     b.HasOne("BooksApi.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .HasConstraintName("fk_asp_net_user_logins_asp_net_users_user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1446,12 +1547,14 @@ namespace BooksApi.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
+                        .HasConstraintName("fk_asp_net_user_roles_asp_net_roles_role_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BooksApi.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .HasConstraintName("fk_asp_net_user_roles_asp_net_users_user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1461,6 +1564,7 @@ namespace BooksApi.Migrations
                     b.HasOne("BooksApi.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .HasConstraintName("fk_asp_net_user_tokens_asp_net_users_user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

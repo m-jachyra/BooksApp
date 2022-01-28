@@ -1,16 +1,27 @@
 <template>
-<v-container>
-  <v-row>
-    <v-col v-for="book in books" :key="book.id">
+<v-container v-if="isAdmin" class="text-center">
+  <h1>Welcome to BooksApp admin panel</h1>
+</v-container>
+<v-container v-else>
+  <v-row
+    class="fill-height"
+    align="center"
+    justify="center"
+  >
+    <v-col 
+      v-for="book in books" 
+      :key="book.id"
+      cols="12"
+      md="4"
+    >
       <v-hover v-slot="{ hover }">
         <v-card 
             :elevation="hover ? 12 : 2"
-            height="350"
-            max-width="350"
+            @click="redirectToRoute(`/books/${book.id}`)"
         >
           <v-img 
-            :src="`/images/books/${book.id}.png`" 
-            @error="replaceByDefault" 
+            :src="`images/books/${book.id}.png`"
+            height="350"
           >
           </v-img>
           <v-card-title class="text-h6">
@@ -34,6 +45,8 @@
 <script>
 import { ref } from "@vue/composition-api"
 import { http } from "../helpers/axios-instances"
+import { redirectToRoute } from "../use/router"
+import { useUser } from "../use/user"
 
 export default {
   name: 'ViewHome',
@@ -41,21 +54,17 @@ export default {
     const books = ref([])
 
     http.get('/books')
-      .then((response) => response.data)
-      .then((data) => books.value = data)
-
-    console.log(books.value)
-
-    const replaceByDefault = event => {
-      event.target.src = '/images/books/default.png'
-    }
-
-    console.log("TUTAJ")
-    console.log(books.value)
+      .then((response) => {
+        books.value = response.data
+        books.value = books.value.slice(0, 9)
+      })
+      
+    const { isAdmin } = useUser()
 
     return {
       books,
-      replaceByDefault
+      isAdmin,
+      redirectToRoute
     }
   }
 }

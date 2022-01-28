@@ -26,10 +26,11 @@ namespace BooksApi.Controllers
             var reviews = from r in _context.Reviews
                           select new ReviewListDto()
                           {
+                              Id = r.Id,
                               Title = r.Title,
                               Content = r.Content,
                               Rate = r.Rate,
-                              Username = r.User.UserName
+                              User = new UserReviewDto { Username = r.User.UserName}
                           };
 
             return reviews;
@@ -96,7 +97,9 @@ namespace BooksApi.Controllers
             {
                 Rate = reviewDto.Rate,
                 Title = reviewDto.Title,
-                Content = reviewDto.Content
+                Content = reviewDto.Content,
+                UserId = reviewDto.UserId,
+                BookId = reviewDto.BookId
             };
 
             _context.Reviews.Add(review);
@@ -108,7 +111,7 @@ namespace BooksApi.Controllers
                 review);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteReview(long id)
         {

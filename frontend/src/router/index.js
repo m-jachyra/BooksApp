@@ -10,9 +10,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '@/views/ViewHome')
   },
   {
-    path: '/detail',
+    path: '/books/:id',
     name: 'ViewBookDetail',
     component: () => import(/* webpackChunkName: "about" */ '@/views/ViewBookDetail')
+  },
+  {
+    path: '/authors/:id',
+    name: 'ViewAuthorDetail',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewAuthorDetail')
+  },
+  {
+    path: '/reviews/:id',
+    name: 'ViewReviewDetail',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewReviewDetail')
+  },
+  {
+    path: '/genres/:id',
+    name: 'ViewGenreDetail',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewGenreDetail')
   },
   {
     path: '/login',
@@ -35,17 +50,34 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '@/views/ViewAuthorList')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/reviews',
+    name: 'ViewReviewList',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewReviewList')
   },
   {
-    path: '/admin/books',
-    name: 'ViewAdminBookList',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/admin/ViewAdminBookList')
+    path: '/genres',
+    name: 'ViewGenreList',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewGenreList')
+  },
+  {
+    path: '/add-book',
+    name: 'ViewAddBook',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewAddBook')
+  },
+  {
+    path: '/add-author',
+    name: 'ViewAddAuthor',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewAddAuthor')
+  },
+  {
+    path: '/add-genre',
+    name: 'ViewAddGenre',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewAddGenre')
+  },
+  {
+    path: '/settings',
+    name: 'ViewSettings',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ViewSettings')
   },
 ]
 

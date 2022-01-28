@@ -108,7 +108,7 @@ namespace BooksApi.Controllers
                 author);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteAuthor(long id)
         {
@@ -139,6 +139,31 @@ namespace BooksApi.Controllers
             };
 
             return File(image, "image/png");
+        }
+
+        [HttpGet("{id}/books")]
+        [AllowAnonymous]
+        public IQueryable<BookListDto> GetBooks(long id)
+        {
+            var books = from b in _context.Books
+                          where b.Author.Id == id
+                          select new BookListDto()
+                          {
+                              Id = b.Id,
+                              Title = b.Title,
+                              Author = new AuthorListDto
+                              {
+                                  Id = b.Author.Id,
+                                  Name = b.Author.AuthorName
+                              },
+                              Genre = new GenreDetailDto
+                              {
+                                  Id = b.Genre.Id,
+                                  Name = b.Genre.GenreName
+                              }
+                            };
+
+            return books;
         }
 
         private bool AuthorExists(long id)

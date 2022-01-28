@@ -102,7 +102,7 @@ namespace BooksApi.Controllers
                 opinion);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteOpinion(long id)
         {

@@ -27,7 +27,7 @@ namespace BooksApi.Controllers
                         select new GenreDetailDto()
                         {
                             Id = g.Id,
-                            GenreName = g.GenreName
+                            Name = g.GenreName
                         };
 
             return books;
@@ -41,7 +41,7 @@ namespace BooksApi.Controllers
             new GenreDetailDto()
             {
                 Id = g.Id,
-                GenreName = g.GenreName
+                Name = g.GenreName
             }).SingleOrDefaultAsync(g => g.Id == id);
 
             if (genre == null)
@@ -67,7 +67,7 @@ namespace BooksApi.Controllers
                 return NotFound();
             }
 
-            genre.GenreName = genreDto.GenreName;
+            genre.GenreName = genreDto.Name;
 
             try
             {
@@ -87,7 +87,7 @@ namespace BooksApi.Controllers
         {
             var genre = new Genre
             {
-                GenreName = genreDto.GenreName,
+                GenreName = genreDto.Name,
             };
 
             _context.Genres.Add(genre);
@@ -99,7 +99,7 @@ namespace BooksApi.Controllers
                 genre);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteGenre(long id)
         {

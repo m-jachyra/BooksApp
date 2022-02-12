@@ -15,3 +15,4 @@ export const isTokenValid = token => {
 }
 
 export const decodeToken = token => decode(token)
+
